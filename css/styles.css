@@ -13,7 +13,7 @@ html {
 body {
   background: radial-gradient(circle at top, #1f3756, #141539) no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 100%;
   min-height: 100%;
   font-family: 'Barlow Semi Condensed', sans-serif;
   overflow-x: hidden;
@@ -36,6 +36,115 @@ body {
   visibility: hidden;
   min-height: 0;
   height: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 3;
+  display: none;
+}
+
+.overlay.rules-open {
+  display: block;
+}
+
+.rules-module {
+  position: absolute;
+  background: #fff;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 9.5rem 0 6.5rem;
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .rules-module {
+    width: 400px;
+    height: 415px;
+    margin: auto;
+    padding: 0;
+    border-radius: 8px;
+  }
+}
+
+.rules-module.open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media screen and (min-width: 1024px) {
+  .rules-module.open {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.rules-module span {
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  color: #3b4262;
+  width: 70%;
+}
+
+@media screen and (min-width: 1024px) {
+  .rules-module span {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .rules-module img {
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
+  }
+}
+
+.rules-module .close {
+  border: none;
+  background: transparent;
+  padding: 1.5rem 2rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .rules-module .close {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    width: auto;
+  }
 }
 
 .heading {
