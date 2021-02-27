@@ -42,6 +42,11 @@ button {
   cursor: pointer;
 }
 
+button:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+}
+
 .overlay {
   position: absolute;
   top: 0;
@@ -278,6 +283,7 @@ main {
 
 .game-container .choices-container .choice-container {
   position: absolute;
+  cursor: pointer;
 }
 
 .game-container .choices-container .paper {

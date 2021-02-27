@@ -48,6 +48,10 @@ body {
 
 button {
 	cursor: pointer;
+
+	&:active {
+		transform: scale(0.98);
+	}
 }
 
 .overlay {
@@ -219,6 +223,7 @@ main {
 
 		.choice-container {
 			position: absolute;
+			cursor: pointer;
 		}
 
 		.paper {
