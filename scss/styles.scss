@@ -1,3 +1,9 @@
+@mixin desktop {
+	@media screen and (min-width: 1024px) {
+		@content;
+	}
+}
+
 *,
 *::before,
 *::after {
@@ -6,6 +12,7 @@
 
 html {
 	font-size: 62.5%;
+	height: 100%;
 }
 
 body {
@@ -17,12 +24,13 @@ body {
 		no-repeat;
 	background-size: cover;
 	height: 100vh;
+	min-height: 100%;
 	font-family: 'Barlow Semi Condensed', sans-serif;
-}
+	overflow-x: hidden;
+	padding: 3.2rem 0;
 
-@mixin desktop {
-	@media screen and (min-width: 1024px) {
-		@content;
+	@include desktop {
+		padding-top: 4.8rem;
 	}
 }
 
@@ -30,22 +38,27 @@ body {
 	width: 83%;
 	max-width: 700px;
 	margin: 0 auto;
-	padding: 3.2rem 0;
 }
 
 .hidden {
 	visibility: hidden;
+	min-height: 0;
+	height: 0;
 }
 
-header {
+.heading {
 	border: 3px solid rgba($color: #fff, $alpha: 0.5);
 	border-radius: 5px;
 	padding: 1.2rem;
-	margin: 0 auto 16rem;
+	margin: 0 auto 10rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	max-width: 700px;
+
+	@include desktop {
+		margin-bottom: 7.2rem;
+	}
 
 	img {
 		width: 83px;
@@ -98,10 +111,21 @@ main {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	height: 60vh;
+	min-height: 60vh;
+	position: relative;
+
+	@include desktop {
+		justify-content: flex-start;
+	}
 }
 
 .game-container {
+	padding-top: 7rem;
+
+	@include desktop {
+		padding-top: 8rem;
+	}
+
 	.choices-container {
 		position: relative;
 		max-width: 476px;
@@ -111,10 +135,6 @@ main {
 			width: 65%;
 			display: block;
 			margin: 0 auto;
-
-			@include desktop {
-				width: 100%;
-			}
 		}
 
 		.choice-container {
@@ -127,7 +147,6 @@ main {
 
 			@include desktop {
 				top: -80px;
-				left: -100px;
 			}
 		}
 
@@ -137,7 +156,6 @@ main {
 
 			@include desktop {
 				top: -80px;
-				right: -100px;
 			}
 		}
 
@@ -170,8 +188,19 @@ main {
 		background: #4664f4;
 		box-shadow: 0 5px 0 #2a45c2;
 
+		@include desktop {
+			box-shadow: 0 10px 0 #2a45c2;
+		}
+
 		.choice-icon {
-			background: url(../images/icon-paper.svg) no-repeat center;
+			background: url(../images/icon-paper.svg) no-repeat center/contain;
+			width: 48px;
+			height: 56px;
+
+			@include desktop {
+				width: 73px;
+				height: 86px;
+			}
 		}
 	}
 
@@ -179,8 +208,19 @@ main {
 		background: #eb9f0e;
 		box-shadow: 0 5px 0 #c76c1b;
 
+		@include desktop {
+			box-shadow: 0 10px 0 #c76c1b;
+		}
+
 		.choice-icon {
-			background: url(../images/icon-scissors.svg) no-repeat center;
+			background: url(../images/icon-scissors.svg) no-repeat center/contain;
+			width: 63px;
+			height: 63px;
+
+			@include desktop {
+				width: 96px;
+				height: 96px;
+			}
 		}
 	}
 
@@ -188,8 +228,19 @@ main {
 		background: #db2e4d;
 		box-shadow: 0 5px 0 #9d1634;
 
+		@include desktop {
+			box-shadow: 0 10px 0 #9d1634;
+		}
+
 		.choice-icon {
-			background: url(../images/icon-rock.svg) no-repeat center;
+			background: url(../images/icon-rock.svg) no-repeat center/contain;
+			width: 50px;
+			height: 50px;
+
+			@include desktop {
+				width: 76px;
+				height: 76px;
+			}
 		}
 	}
 
@@ -198,6 +249,10 @@ main {
 	&.rock .choice {
 		background: #fff;
 		box-shadow: inset 0 5px 0 #babfd4;
+
+		@include desktop {
+			box-shadow: inset 0 10px 0 #babfd4;
+		}
 	}
 
 	.choice {
@@ -212,15 +267,6 @@ main {
 		@include desktop {
 			width: 150px;
 			height: 150px;
-		}
-
-		.choice-icon {
-			width: 50px;
-			height: 100%;
-
-			@include desktop {
-				width: 80px;
-			}
 		}
 	}
 }
@@ -243,11 +289,22 @@ main {
 	@include desktop {
 		position: absolute;
 		right: 3.2rem;
-		bottom: 3.2rem;
+		bottom: 0;
 	}
 }
 
-.game-container.step-2 {
+.restart {
+	background: #fff;
+	border: 1px solid #fff;
+	color: #3b4262;
+	padding: 1.5rem 6rem;
+	margin-top: 1.6rem;
+}
+
+.game-container.step-2,
+.game-container.step-3 {
+	padding-top: 0;
+
 	.choices-container {
 		display: none;
 	}
@@ -259,6 +316,10 @@ main {
 		max-width: 500px;
 		margin: 0 auto;
 
+		@include desktop {
+			max-width: 700px;
+		}
+
 		.p1,
 		.computer {
 			display: flex;
@@ -268,6 +329,18 @@ main {
 
 			@include desktop {
 				flex-direction: column-reverse;
+			}
+
+			.choice-container {
+				@include desktop {
+					width: 300px;
+					height: 300px;
+
+					.choice {
+						width: 225px;
+						height: 225px;
+					}
+				}
 			}
 		}
 
@@ -281,10 +354,108 @@ main {
 
 			@include desktop {
 				margin-top: 0;
-				margin-bottom: 6rem;
+				margin-bottom: 5rem;
 				font-size: 2.4rem;
 				letter-spacing: 3px;
 			}
+		}
+	}
+}
+
+.game-container.step-3 {
+	.container {
+		@include desktop {
+			width: 950px;
+			max-width: 950px;
+			position: relative;
+		}
+	}
+
+	.shoot {
+		position: relative;
+
+		@include desktop {
+			max-width: 950px;
+			width: 100%;
+		}
+	}
+
+	.p1.win,
+	.computer.win {
+		&::after {
+			content: '';
+			width: 280px;
+			height: 280px;
+			background: #fff;
+			opacity: 0.05;
+			border-radius: 100%;
+			position: absolute;
+			top: -45%;
+			z-index: -1;
+
+			@include desktop {
+				width: 720px;
+				height: 720px;
+				top: unset;
+				bottom: -50%;
+			}
+		}
+
+		.choice-container {
+			&::after {
+				content: '';
+				width: 220px;
+				height: 220px;
+				background: #fff;
+				opacity: 0.05;
+				border-radius: 100%;
+				position: absolute;
+				z-index: -1;
+
+				@include desktop {
+					width: 560px;
+					height: 560px;
+				}
+			}
+
+			.choice::after {
+				content: '';
+				width: 170px;
+				height: 170px;
+				position: absolute;
+				background: #fff;
+				opacity: 0.05;
+				border-radius: 100%;
+				z-index: -1;
+
+				@include desktop {
+					width: 420px;
+					height: 420px;
+				}
+			}
+		}
+	}
+
+	.results {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 6rem;
+
+		@include desktop {
+			position: absolute;
+			margin-top: 0;
+			top: 0;
+			right: 0;
+			left: 0;
+			bottom: 0;
+			justify-content: center;
+		}
+
+		.outcome {
+			font-size: 5.6rem;
+			color: #fff;
+			text-transform: uppercase;
 		}
 	}
 }

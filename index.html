@@ -22,60 +22,61 @@
 		<link rel="stylesheet" href="css/styles.css" />
 	</head>
 
-	<body class="container">
+	<body>
 		<header>
-			<img src="images/logo.svg" alt="" class="logo" />
-			<div class="scorecard">
-				<span class="title">Score</span>
-				<span class="score">12</span>
+			<div class="container">
+				<div class="heading">
+					<img src="images/logo.svg" alt="" class="logo" />
+					<div class="scorecard">
+						<span class="title">Score</span>
+						<span class="score">12</span>
+					</div>
+				</div>
 			</div>
 		</header>
 		<main>
-			<div class="game-container step-2">
-				<div class="choices-container">
-					<img class="triangle" src="images/bg-triangle.svg" alt="" />
-
-					<div class="choice-container paper">
-						<div class="choice">
-							<div class="choice-icon"></div>
-						</div>
-					</div>
-
-					<div class="choice-container scissors">
-						<div class="choice">
-							<div class="choice-icon"></div>
-						</div>
-					</div>
-
-					<div class="choice-container rock">
-						<div class="choice">
-							<div class="choice-icon"></div>
-						</div>
-					</div>
-				</div>
-
-				<div class="shoot">
-					<div class="p1">
+			<div class="game-container step-3">
+				<div class="container">
+					<div class="choices-container">
+						<img class="triangle" src="images/bg-triangle.svg" alt="" />
 						<div class="choice-container paper">
 							<div class="choice">
 								<div class="choice-icon"></div>
 							</div>
 						</div>
-						<span class="shoot-title">You Picked</span>
-					</div>
-					<div class="computer">
 						<div class="choice-container scissors">
 							<div class="choice">
 								<div class="choice-icon"></div>
 							</div>
 						</div>
-						<span class="shoot-title">The House Picked</span>
+						<div class="choice-container rock">
+							<div class="choice">
+								<div class="choice-icon"></div>
+							</div>
+						</div>
 					</div>
-				</div>
-
-				<div class="results hidden">
-					<span class="outcome">You Win</span>
-					<button class="btn restart">Play Again</button>
+					<div class="shoot">
+						<div class="p1">
+							<div class="choice-container paper">
+								<div class="choice">
+									<div class="choice-icon"></div>
+								</div>
+							</div>
+							<span class="shoot-title">You Picked</span>
+						</div>
+						<div class="computer win">
+							<div class="choice-container scissors">
+								<div class="choice">
+									<div class="choice-icon"></div>
+								</div>
+							</div>
+							<span class="shoot-title">The House Picked</span>
+						</div>
+					</div>
+					<div class="results">
+						<span class="outcome">You Win</span>
+						<button class="btn restart">Play Again</button>
+					</div>
 				</div>
 			</div>
 			<button class="btn rules">Rules</button>

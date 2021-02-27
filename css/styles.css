@@ -7,31 +7,42 @@
 
 html {
   font-size: 62.5%;
+  height: 100%;
 }
 
 body {
   background: radial-gradient(circle at top, #1f3756, #141539) no-repeat;
   background-size: cover;
   height: 100vh;
+  min-height: 100%;
   font-family: 'Barlow Semi Condensed', sans-serif;
+  overflow-x: hidden;
+  padding: 3.2rem 0;
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    padding-top: 4.8rem;
+  }
 }
 
 .container {
   width: 83%;
   max-width: 700px;
   margin: 0 auto;
-  padding: 3.2rem 0;
 }
 
 .hidden {
   visibility: hidden;
+  min-height: 0;
+  height: 0;
 }
 
-header {
+.heading {
   border: 3px solid rgba(255, 255, 255, 0.5);
   border-radius: 5px;
   padding: 1.2rem;
-  margin: 0 auto 16rem;
+  margin: 0 auto 10rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,18 +55,24 @@ header {
   max-width: 700px;
 }
 
-header img {
+@media screen and (min-width: 1024px) {
+  .heading {
+    margin-bottom: 7.2rem;
+  }
+}
+
+.heading img {
   width: 83px;
   margin-left: 1rem;
 }
 
 @media screen and (min-width: 1024px) {
-  header img {
+  .heading img {
     width: 160px;
   }
 }
 
-header .scorecard {
+.heading .scorecard {
   background: #fff;
   width: 80px;
   display: -webkit-box;
@@ -73,13 +90,13 @@ header .scorecard {
 }
 
 @media screen and (min-width: 1024px) {
-  header .scorecard {
+  .heading .scorecard {
     width: 150px;
     padding: 1.6rem 0;
   }
 }
 
-header .scorecard .title {
+.heading .scorecard .title {
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -87,20 +104,20 @@ header .scorecard .title {
 }
 
 @media screen and (min-width: 1024px) {
-  header .scorecard .title {
+  .heading .scorecard .title {
     font-size: 1.6rem;
     letter-spacing: 2.5px;
   }
 }
 
-header .scorecard .score {
+.heading .scorecard .score {
   font-size: 4rem;
   font-weight: 700;
   color: #565468;
 }
 
 @media screen and (min-width: 1024px) {
-  header .scorecard .score {
+  .heading .scorecard .score {
     font-size: 6.4rem;
   }
 }
@@ -116,7 +133,26 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: 60vh;
+  min-height: 60vh;
+  position: relative;
+}
+
+@media screen and (min-width: 1024px) {
+  main {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+}
+
+.game-container {
+  padding-top: 7rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .game-container {
+    padding-top: 8rem;
+  }
 }
 
 .game-container .choices-container {
@@ -131,12 +167,6 @@ main {
   margin: 0 auto;
 }
 
-@media screen and (min-width: 1024px) {
-  .game-container .choices-container .triangle {
-    width: 100%;
-  }
-}
-
 .game-container .choices-container .choice-container {
   position: absolute;
 }
@@ -149,7 +179,6 @@ main {
 @media screen and (min-width: 1024px) {
   .game-container .choices-container .paper {
     top: -80px;
-    left: -100px;
   }
 }
 
@@ -161,7 +190,6 @@ main {
 @media screen and (min-width: 1024px) {
   .game-container .choices-container .scissors {
     top: -80px;
-    right: -100px;
   }
 }
 
@@ -206,8 +234,24 @@ main {
           box-shadow: 0 5px 0 #2a45c2;
 }
 
+@media screen and (min-width: 1024px) {
+  .choice-container.paper {
+    -webkit-box-shadow: 0 10px 0 #2a45c2;
+            box-shadow: 0 10px 0 #2a45c2;
+  }
+}
+
 .choice-container.paper .choice-icon {
-  background: url(../images/icon-paper.svg) no-repeat center;
+  background: url(../images/icon-paper.svg) no-repeat center/contain;
+  width: 48px;
+  height: 56px;
+}
+
+@media screen and (min-width: 1024px) {
+  .choice-container.paper .choice-icon {
+    width: 73px;
+    height: 86px;
+  }
 }
 
 .choice-container.scissors {
@@ -216,8 +260,24 @@ main {
           box-shadow: 0 5px 0 #c76c1b;
 }
 
+@media screen and (min-width: 1024px) {
+  .choice-container.scissors {
+    -webkit-box-shadow: 0 10px 0 #c76c1b;
+            box-shadow: 0 10px 0 #c76c1b;
+  }
+}
+
 .choice-container.scissors .choice-icon {
-  background: url(../images/icon-scissors.svg) no-repeat center;
+  background: url(../images/icon-scissors.svg) no-repeat center/contain;
+  width: 63px;
+  height: 63px;
+}
+
+@media screen and (min-width: 1024px) {
+  .choice-container.scissors .choice-icon {
+    width: 96px;
+    height: 96px;
+  }
 }
 
 .choice-container.rock {
@@ -226,8 +286,24 @@ main {
           box-shadow: 0 5px 0 #9d1634;
 }
 
+@media screen and (min-width: 1024px) {
+  .choice-container.rock {
+    -webkit-box-shadow: 0 10px 0 #9d1634;
+            box-shadow: 0 10px 0 #9d1634;
+  }
+}
+
 .choice-container.rock .choice-icon {
-  background: url(../images/icon-rock.svg) no-repeat center;
+  background: url(../images/icon-rock.svg) no-repeat center/contain;
+  width: 50px;
+  height: 50px;
+}
+
+@media screen and (min-width: 1024px) {
+  .choice-container.rock .choice-icon {
+    width: 76px;
+    height: 76px;
+  }
 }
 
 .choice-container.paper .choice,
@@ -236,6 +312,15 @@ main {
   background: #fff;
   -webkit-box-shadow: inset 0 5px 0 #babfd4;
           box-shadow: inset 0 5px 0 #babfd4;
+}
+
+@media screen and (min-width: 1024px) {
+  .choice-container.paper .choice,
+  .choice-container.scissors .choice,
+  .choice-container.rock .choice {
+    -webkit-box-shadow: inset 0 10px 0 #babfd4;
+            box-shadow: inset 0 10px 0 #babfd4;
+  }
 }
 
 .choice-container .choice {
@@ -261,17 +346,6 @@ main {
   }
 }
 
-.choice-container .choice .choice-icon {
-  width: 50px;
-  height: 100%;
-}
-
-@media screen and (min-width: 1024px) {
-  .choice-container .choice .choice-icon {
-    width: 80px;
-  }
-}
-
 .btn {
   padding: 1rem 3.6rem;
   font-size: 1.6rem;
@@ -294,15 +368,30 @@ main {
   .rules {
     position: absolute;
     right: 3.2rem;
-    bottom: 3.2rem;
+    bottom: 0;
   }
 }
 
-.game-container.step-2 .choices-container {
+.restart {
+  background: #fff;
+  border: 1px solid #fff;
+  color: #3b4262;
+  padding: 1.5rem 6rem;
+  margin-top: 1.6rem;
+}
+
+.game-container.step-2,
+.game-container.step-3 {
+  padding-top: 0;
+}
+
+.game-container.step-2 .choices-container,
+.game-container.step-3 .choices-container {
   display: none;
 }
 
-.game-container.step-2 .shoot {
+.game-container.step-2 .shoot,
+.game-container.step-3 .shoot {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -316,8 +405,17 @@ main {
   margin: 0 auto;
 }
 
+@media screen and (min-width: 1024px) {
+  .game-container.step-2 .shoot,
+  .game-container.step-3 .shoot {
+    max-width: 700px;
+  }
+}
+
 .game-container.step-2 .shoot .p1,
-.game-container.step-2 .shoot .computer {
+.game-container.step-2 .shoot .computer,
+.game-container.step-3 .shoot .p1,
+.game-container.step-3 .shoot .computer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -335,7 +433,9 @@ main {
 
 @media screen and (min-width: 1024px) {
   .game-container.step-2 .shoot .p1,
-  .game-container.step-2 .shoot .computer {
+  .game-container.step-2 .shoot .computer,
+  .game-container.step-3 .shoot .p1,
+  .game-container.step-3 .shoot .computer {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
@@ -343,7 +443,25 @@ main {
   }
 }
 
-.game-container.step-2 .shoot-title {
+@media screen and (min-width: 1024px) {
+  .game-container.step-2 .shoot .p1 .choice-container,
+  .game-container.step-2 .shoot .computer .choice-container,
+  .game-container.step-3 .shoot .p1 .choice-container,
+  .game-container.step-3 .shoot .computer .choice-container {
+    width: 300px;
+    height: 300px;
+  }
+  .game-container.step-2 .shoot .p1 .choice-container .choice,
+  .game-container.step-2 .shoot .computer .choice-container .choice,
+  .game-container.step-3 .shoot .p1 .choice-container .choice,
+  .game-container.step-3 .shoot .computer .choice-container .choice {
+    width: 225px;
+    height: 225px;
+  }
+}
+
+.game-container.step-2 .shoot-title,
+.game-container.step-3 .shoot-title {
   font-size: 1.5rem;
   color: #fff;
   letter-spacing: 1.8px;
@@ -353,11 +471,128 @@ main {
 }
 
 @media screen and (min-width: 1024px) {
-  .game-container.step-2 .shoot-title {
+  .game-container.step-2 .shoot-title,
+  .game-container.step-3 .shoot-title {
     margin-top: 0;
-    margin-bottom: 6rem;
+    margin-bottom: 5rem;
     font-size: 2.4rem;
     letter-spacing: 3px;
   }
+}
+
+@media screen and (min-width: 1024px) {
+  .game-container.step-3 .container {
+    width: 950px;
+    max-width: 950px;
+    position: relative;
+  }
+}
+
+.game-container.step-3 .shoot {
+  position: relative;
+}
+
+@media screen and (min-width: 1024px) {
+  .game-container.step-3 .shoot {
+    max-width: 950px;
+    width: 100%;
+  }
+}
+
+.game-container.step-3 .p1.win::after,
+.game-container.step-3 .computer.win::after {
+  content: '';
+  width: 280px;
+  height: 280px;
+  background: #fff;
+  opacity: 0.05;
+  border-radius: 100%;
+  position: absolute;
+  top: -45%;
+  z-index: -1;
+}
+
+@media screen and (min-width: 1024px) {
+  .game-container.step-3 .p1.win::after,
+  .game-container.step-3 .computer.win::after {
+    width: 720px;
+    height: 720px;
+    top: unset;
+    bottom: -50%;
+  }
+}
+
+.game-container.step-3 .p1.win .choice-container::after,
+.game-container.step-3 .computer.win .choice-container::after {
+  content: '';
+  width: 220px;
+  height: 220px;
+  background: #fff;
+  opacity: 0.05;
+  border-radius: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+@media screen and (min-width: 1024px) {
+  .game-container.step-3 .p1.win .choice-container::after,
+  .game-container.step-3 .computer.win .choice-container::after {
+    width: 560px;
+    height: 560px;
+  }
+}
+
+.game-container.step-3 .p1.win .choice-container .choice::after,
+.game-container.step-3 .computer.win .choice-container .choice::after {
+  content: '';
+  width: 170px;
+  height: 170px;
+  position: absolute;
+  background: #fff;
+  opacity: 0.05;
+  border-radius: 100%;
+  z-index: -1;
+}
+
+@media screen and (min-width: 1024px) {
+  .game-container.step-3 .p1.win .choice-container .choice::after,
+  .game-container.step-3 .computer.win .choice-container .choice::after {
+    width: 420px;
+    height: 420px;
+  }
+}
+
+.game-container.step-3 .results {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 6rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .game-container.step-3 .results {
+    position: absolute;
+    margin-top: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.game-container.step-3 .results .outcome {
+  font-size: 5.6rem;
+  color: #fff;
+  text-transform: uppercase;
 }
 /*# sourceMappingURL=styles.css.map */
