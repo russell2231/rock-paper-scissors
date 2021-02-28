@@ -18,6 +18,71 @@ let gameScore = localStorage.getItem('score')
 
 score.textContent = gameScore;
 
+function housePicker() {
+	// Pick a random choice for house
+	const rockPaperScissorsArr = ['rock', 'paper', 'scissors'];
+	const random = Math.floor(Math.random() * 3);
+
+	return rockPaperScissorsArr[random];
+}
+
+function keepScore() {
+	if (p1.parentElement.classList.contains('win')) {
+		gameScore++;
+		localStorage.setItem('score', gameScore);
+	} else if (computer.parentElement.classList.contains('win')) {
+		gameScore--;
+		localStorage.setItem('score', gameScore);
+	}
+
+	score.textContent = gameScore;
+}
+
+function whoWon(p1Pick, computerPick) {
+	const outcome = document.querySelector('.outcome');
+	game.classList.remove('step-2');
+	game.classList.add('step-3');
+	results.classList.remove('hidden');
+
+	// Check which pick wins and print results
+	if (p1Pick === computerPick) {
+		outcome.textContent = 'Tie';
+	} else if (p1Pick === 'rock') {
+		if (computerPick === 'paper') {
+			outcome.textContent = 'You Lose';
+			computer.parentElement.classList.add('win');
+		} else {
+			if (computerPick === 'scissors') {
+				outcome.textContent = 'You Win';
+				p1.parentElement.classList.add('win');
+			}
+		}
+	} else if (p1Pick === 'paper') {
+		if (computerPick === 'scissors') {
+			outcome.textContent = 'You Lose';
+			computer.parentElement.classList.add('win');
+		} else {
+			if (computerPick === 'rock') {
+				outcome.textContent = 'You Win';
+				p1.parentElement.classList.add('win');
+			}
+		}
+	} else if (p1Pick === 'scissors') {
+		if (computerPick === 'rock') {
+			outcome.textContent = 'You Lose';
+			computer.parentElement.classList.add('win');
+		} else {
+			if (computerPick === 'paper') {
+				outcome.textContent = 'You Win';
+				p1.parentElement.classList.add('win');
+			}
+		}
+	}
+
+	// Change Score
+	keepScore();
+}
+
 // Start Game
 rockPaperScissors.forEach((choice) => {
 	choice.addEventListener('click', () => {
@@ -58,79 +123,20 @@ rockPaperScissors.forEach((choice) => {
 	});
 });
 
+// Event Listeners
+
 rulesBtn.addEventListener('click', () => {
 	overlay.classList.toggle('rules-open');
 	rulesModule.classList.toggle('open');
 });
 
+// Close Rules Module
 closeBtn.addEventListener('click', () => {
 	overlay.classList.toggle('rules-open');
 	rulesModule.classList.toggle('open');
 });
 
+// Restart Game
 playAgainBtn.addEventListener('click', () => {
 	location.reload();
 });
-
-function housePicker() {
-	const rockPaperScissorsArr = ['rock', 'paper', 'scissors'];
-	const random = Math.floor(Math.random() * 3);
-
-	return rockPaperScissorsArr[random];
-}
-
-function whoWon(p1Pick, computerPick) {
-	const outcome = document.querySelector('.outcome');
-	game.classList.remove('step-2');
-	game.classList.add('step-3');
-	results.classList.remove('hidden');
-
-	if (p1Pick === computerPick) {
-		outcome.textContent = 'Tie';
-	} else if (p1Pick === 'rock') {
-		if (computerPick === 'paper') {
-			outcome.textContent = 'You Lose';
-			computer.parentElement.classList.add('win');
-		} else {
-			if (computerPick === 'scissors') {
-				outcome.textContent = 'You Win';
-				p1.parentElement.classList.add('win');
-			}
-		}
-	} else if (p1Pick === 'paper') {
-		if (computerPick === 'scissors') {
-			outcome.textContent = 'You Lose';
-			computer.parentElement.classList.add('win');
-		} else {
-			if (computerPick === 'rock') {
-				outcome.textContent = 'You Win';
-				p1.parentElement.classList.add('win');
-			}
-		}
-	} else if (p1Pick === 'scissors') {
-		if (computerPick === 'rock') {
-			outcome.textContent = 'You Lose';
-			computer.parentElement.classList.add('win');
-		} else {
-			if (computerPick === 'paper') {
-				outcome.textContent = 'You Win';
-				p1.parentElement.classList.add('win');
-			}
-		}
-	}
-	keepScore();
-}
-
-function keepScore() {
-	if (p1.parentElement.classList.contains('win')) {
-		gameScore++;
-		localStorage.setItem('score', gameScore);
-	} else if (computer.parentElement.classList.contains('win')) {
-		if (gameScore > 0) {
-			gameScore--;
-			localStorage.setItem('score', gameScore);
-		}
-	}
-
-	score.textContent = gameScore;
-}

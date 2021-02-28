@@ -1,0 +1,24 @@
+.game-container.step-3 {
+	padding-top: 0;
+
+	.choices-container {
+		display: none;
+	}
+
+	.container {
+		@include desktop {
+			width: 950px;
+			max-width: 950px;
+			position: relative;
+		}
+	}
+
+	.shoot {
+		position: relative;
+
+		@include desktop {
+			max-width: 950px;
+			width: 100%;
+		}
+	}
+}

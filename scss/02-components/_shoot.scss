@@ -1,0 +1,50 @@
+.shoot {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 500px;
+	margin: 0 auto;
+
+	@include desktop {
+		max-width: 700px;
+	}
+
+	.pick {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		@include desktop {
+			flex-direction: column-reverse;
+		}
+
+		.choice-container {
+			@include desktop {
+				width: 300px;
+				height: 300px;
+
+				.choice {
+					width: 225px;
+					height: 225px;
+				}
+			}
+		}
+	}
+
+	&-title {
+		font-size: 1.5rem;
+		color: #fff;
+		letter-spacing: 1.8px;
+		text-transform: uppercase;
+		margin-top: 2rem;
+		font-weight: 700;
+
+		@include desktop {
+			margin-top: 0;
+			margin-bottom: 5rem;
+			font-size: 2.4rem;
+			letter-spacing: 3px;
+		}
+	}
+}

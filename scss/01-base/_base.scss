@@ -1,0 +1,51 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	background: radial-gradient(
+			circle at top,
+			hsl(214, 47%, 23%),
+			hsl(237, 49%, 15%)
+		)
+		no-repeat;
+	background-size: cover;
+	height: 100%;
+	min-height: 100%;
+	overflow-x: hidden;
+	padding: 3.2rem 0;
+
+	@include desktop {
+		padding-top: 4.8rem;
+	}
+}
+
+.container {
+	width: 83%;
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+.hidden {
+	visibility: hidden;
+	min-height: 0;
+	height: 0;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 60vh;
+	position: relative;
+
+	@include desktop {
+		justify-content: flex-start;
+	}
+}

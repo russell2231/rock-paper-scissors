@@ -1,0 +1,55 @@
+.p1.win,
+.computer.win {
+	&::after {
+		content: '';
+		width: 280px;
+		height: 280px;
+		background: #fff;
+		opacity: 0.05;
+		border-radius: 100%;
+		position: absolute;
+		top: -45%;
+		z-index: -1;
+
+		@include desktop {
+			width: 720px;
+			height: 720px;
+			top: unset;
+			bottom: -50%;
+		}
+	}
+
+	.choice-container {
+		&::after {
+			content: '';
+			width: 220px;
+			height: 220px;
+			background: #fff;
+			opacity: 0.05;
+			border-radius: 100%;
+			position: absolute;
+			z-index: -1;
+
+			@include desktop {
+				width: 560px;
+				height: 560px;
+			}
+		}
+
+		.choice::after {
+			content: '';
+			width: 170px;
+			height: 170px;
+			position: absolute;
+			background: #fff;
+			opacity: 0.05;
+			border-radius: 100%;
+			z-index: -1;
+
+			@include desktop {
+				width: 420px;
+				height: 420px;
+			}
+		}
+	}
+}

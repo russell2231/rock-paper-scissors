@@ -1,0 +1,68 @@
+.game-container {
+	padding-top: 7rem;
+
+	@include desktop {
+		padding-top: 8rem;
+	}
+
+	.choices-container {
+		position: relative;
+		max-width: 476px;
+		margin: 0 auto;
+
+		.triangle {
+			width: 65%;
+			display: block;
+			margin: 0 auto;
+		}
+
+		.choice-container {
+			position: absolute;
+			cursor: pointer;
+
+			&:hover .choice::after {
+				content: '';
+				width: 170px;
+				height: 170px;
+				position: absolute;
+				background: #fff;
+				opacity: 0.05;
+				border-radius: 100%;
+				z-index: -1;
+
+				@include desktop {
+					width: 250px;
+					height: 250px;
+				}
+			}
+		}
+
+		.paper {
+			top: -60px;
+			left: 0%;
+
+			@include desktop {
+				top: -80px;
+			}
+		}
+
+		.scissors {
+			top: -60px;
+			right: 0;
+
+			@include desktop {
+				top: -80px;
+			}
+		}
+
+		.rock {
+			bottom: -40px;
+			left: 50%;
+			transform: translate(-50%);
+
+			@include desktop {
+				bottom: -80px;
+			}
+		}
+	}
+}
