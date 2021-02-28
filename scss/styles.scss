@@ -224,6 +224,22 @@ main {
 		.choice-container {
 			position: absolute;
 			cursor: pointer;
+
+			&:hover .choice::after {
+				content: '';
+				width: 170px;
+				height: 170px;
+				position: absolute;
+				background: #fff;
+				opacity: 0.05;
+				border-radius: 100%;
+				z-index: -1;
+
+				@include desktop {
+					width: 250px;
+					height: 250px;
+				}
+			}
 		}
 
 		.paper {
@@ -370,11 +386,17 @@ main {
 	background: transparent;
 	border: 1px solid #fff;
 	color: #fff;
+	transition: background 0.7s;
 
 	@include desktop {
 		position: absolute;
 		right: 3.2rem;
 		bottom: 0;
+	}
+
+	&:hover {
+		background: #fff;
+		color: #3b4262;
 	}
 }
 
@@ -384,6 +406,11 @@ main {
 	color: #3b4262;
 	padding: 1.5rem 6rem;
 	margin-top: 1.6rem;
+	transition: color 0.7s;
+
+	&:hover {
+		color: #db2e4d;
+	}
 }
 
 .game-container.step-2,
